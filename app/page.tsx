@@ -1,19 +1,13 @@
 "use client";
-import { gradient } from "@/app/Gradient";
-import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect } from "react";
+import GradientComponent from "./GradientComponent";
+import { motion } from "framer-motion";
 
 export default function Home() {
-  useEffect(() => {
-    gradient.initGradient("#gradient-canvas");
-  }, []);
-  <AnimatePresence/>
   return (
     <>
-      <div
-        className="min-h-screen flex flex-col"
-        style={{ background: "linear-gradient(to bottom, #f7fafc, #edf2f7)" }}
-      >
+      <GradientComponent />
+      <div className="min-h-screen flex flex-col">
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
           <h1 className="text-5xl font-bold text-gray-800 bg-yellow-200 p-4 rounded-md">
             Welcome to My Page!
@@ -73,7 +67,6 @@ export default function Home() {
           </form>
         </main>
       </div>
-      <canvas id="gradient-canvas" data-transition-in />
     </>
   );
 }
