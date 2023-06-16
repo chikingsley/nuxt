@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import { gradient } from "./Gradient.js"; // Adjust the path as necessary
 
 function GradientComponent() {
@@ -8,7 +9,7 @@ function GradientComponent() {
   }, []);
 
   return (
-    <canvas
+    <motion.canvas
       id="gradient-canvas"
       data-transition-in
       style={{
@@ -18,10 +19,7 @@ function GradientComponent() {
         width: "100%",
         height: "100%",
         zIndex: -1,
-        "--gradient-color-1": "#c3e4ff",
-        "--gradient-color-2": "#6ec3f4",
-        "--gradient-color-3": "#eae2ff",
-        "--gradient-color-4": "#b9beff",
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
       }}
     />
   );

@@ -1,0 +1,39 @@
+import React from 'react';
+import { useState } from 'react';
+
+function FormComponent({ label }) {
+  const [inputFocus, setInputFocus] = useState(false);
+  const [inputHover, setInputHover] = useState(false);
+
+  return (
+    <div className="mb-7 relative">
+      <input
+        type="text"
+        id="input1"
+        name="input1"
+        placeholder={label}
+        required
+        className={`w-full border-2 border-gray-200 rounded-md p-4 text-gray-400 focus:outline-none transition-colors duration-300 ${
+          inputFocus ? 'border-blue-500' : ''
+        } ${inputHover ? 'hover:border-blue-500' : ''}`}
+        style={{ paddingLeft: '1rem', paddingRight: '' }}
+        onFocus={() => setInputFocus(true)}
+        onBlur={() => setInputFocus(false)}
+        onChange={(e) => setInputValue(e.target.value)}
+        onMouseEnter={() => setInputHover(true)}
+        onMouseLeave={() => setInputHover(false)}
+      />
+      <label
+        htmlFor="input1"
+        className={`absolute left-0 transition-all duration-300 ${
+          inputFocus ? 'text-white text-sm bg-black rounded-t-md px-2 py-1 -top-6' : 'text-black text-base top-2'
+        }`}
+        style={{ paddingLeft: '0.5rem' }}
+      >
+        {inputFocus ? label : ''}
+      </label>
+    </div>
+  );
+}
+
+export default FormComponent;
